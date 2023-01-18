@@ -1,0 +1,22 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model CollectedBadges {
+  badgeId     Int
+  userId      Int
+  collectedAt DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+}
+
+model Users {
+  id          Int    @id @default(autoincrement())
+  name        String
+  lastBadgeId Int?
+}
